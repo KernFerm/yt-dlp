@@ -4591,6 +4591,9 @@ def random_birthday(year_field, month_field, day_field):
 
 
 def find_available_port(interface='127.0.0.1'):
+    # Avoid binding to all interfaces if an empty string is passed
+    if not interface:
+        interface = '127.0.0.1'
     try:
         with socket.socket() as sock:
             sock.bind((interface, 0))
