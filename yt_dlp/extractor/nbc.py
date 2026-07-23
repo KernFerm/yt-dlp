@@ -571,7 +571,7 @@ class NBCNewsIE(ThePlatformIE):  # XXX: Do not subclass from concrete IE
             public_url = va.get('publicUrl')
             if not public_url:
                 continue
-            if '://link.theplatform.com/' in public_url:
+            if urllib.parse.urlparse(public_url).hostname == 'link.theplatform.com':
                 public_url = update_url_query(public_url, {'format': 'redirect'})
             format_id = va.get('format')
             if format_id == 'M3U':

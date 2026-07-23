@@ -3,6 +3,7 @@ import re
 from .common import InfoExtractor
 from ..utils import (
     float_or_none,
+    get_elements_html_by_class,
     int_or_none,
     unified_strdate,
 )
@@ -64,9 +65,15 @@ class GaskrankIE(InfoExtractor):
             r'/tv/tags/[^/]+/"\s*>(?P<tag>[^<]*?)<',
             webpage)
 
-        view_count = self._search_regex(
-            r'class\s*=\s*"gkRight"(?:[^>]*>\s*<[^>]*)*icon-eye-open(?:[^>]*>\s*<[^>]*)*>\s*(?P<view_count>[0-9\.]*)',
-            webpage, 'view_count', default=None)
+        view_count = None
+        for stat_html in get_elements_html_by_class('gkRight', webpage):
+            if 'icon-eye-open' not in stat_html:
+                continue
+            view_count = self._search_regex(
+                r'icon-eye-open[^>]*>\s*(?P<view_count>[0-9.]+)',
+                stat_html, 'view_count', default=None)
+            if view_count:
+                break
         if view_count:
             view_count = int_or_none(view_count.replace('.', ''))
 

@@ -3,6 +3,7 @@ import collections
 import contextlib
 import functools
 import getpass
+import html.parser
 import http.cookiejar
 import inspect
 import itertools
@@ -1916,19 +1917,26 @@ class InfoExtractor:
 
     @staticmethod
     def _hidden_inputs(html):
-        html = re.sub(r'<!--(?:(?!<!--).)*-->', '', html)
-        hidden_inputs = {}
-        for input_el in re.findall(r'(?i)(<input[^>]+>)', html):
-            attrs = extract_attributes(input_el)
-            if not input_el:
-                continue
-            if attrs.get('type') not in ('hidden', 'submit'):
-                continue
-            name = attrs.get('name') or attrs.get('id')
-            value = attrs.get('value')
-            if name and value is not None:
-                hidden_inputs[name] = value
-        return hidden_inputs
+        class HiddenInputParser(html.parser.HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.hidden_inputs = {}
+
+            def handle_starttag(self, tag, attrs):
+                if tag.lower() != 'input':
+                    return
+                attrs = {key: value for key, value in attrs}
+                if attrs.get('type') not in ('hidden', 'submit'):
+                    return
+                name = attrs.get('name') or attrs.get('id')
+                value = attrs.get('value')
+                if name and value is not None:
+                    self.hidden_inputs[name] = value
+
+        parser = HiddenInputParser()
+        parser.feed(html)
+        parser.close()
+        return parser.hidden_inputs
 
     def _form_hidden_inputs(self, form_id, html):
         form = self._search_regex(

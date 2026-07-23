@@ -1,3 +1,5 @@
+import urllib.parse
+
 from .brightcove import (
     BrightcoveLegacyIE,
     BrightcoveNewIE,
@@ -40,7 +42,7 @@ class NownessBaseIE(InfoExtractor):
         request = Request(
             'http://api.nowness.com/api/' + request_path % display_id,
             headers={
-                'X-Nowness-Language': 'zh-cn' if 'cn.nowness.com' in url else 'en-us',
+                'X-Nowness-Language': 'zh-cn' if urllib.parse.urlparse(url).hostname == 'cn.nowness.com' else 'en-us',
             })
         return display_id, self._download_json(request, display_id)
 

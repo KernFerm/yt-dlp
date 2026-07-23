@@ -162,7 +162,7 @@ class SohuIE(InfoExtractor):
                 cdn_id = None
                 retries = 0
 
-                while 'newflv.sohu.ccgslb.net' in video_url:
+                while urllib.parse.urlparse(video_url if '://' in video_url else f'//{video_url}').hostname == 'newflv.sohu.ccgslb.net':
                     params = {
                         'prot': 9,
                         'file': clip_url,

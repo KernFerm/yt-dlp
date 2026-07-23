@@ -1,3 +1,4 @@
+import html.parser
 import re
 import urllib.parse
 
@@ -12,6 +13,29 @@ from ..utils import (
     unescapeHTML,
     unsmuggle_url,
 )
+
+
+class _GlomexScriptParser(html.parser.HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.scripts = []
+        self._script_data = []
+        self._in_script = False
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() == 'script':
+            self._in_script = True
+            self._script_data = []
+
+    def handle_data(self, data):
+        if self._in_script:
+            self._script_data.append(data)
+
+    def handle_endtag(self, tag):
+        if tag.lower() == 'script' and self._in_script:
+            self.scripts.append(''.join(self._script_data))
+            self._script_data = []
+            self._in_script = False
 
 
 class GlomexBaseIE(InfoExtractor):
@@ -215,8 +239,10 @@ class GlomexEmbedIE(GlomexBaseIE):
         regex = fr'''(?x)
             (?P<is_js>dataset\.)?%s\s*(?(is_js)=|:)\s*
             (?P<q>{quot_re})(?P<id>(?:(?!(?P=q)).)+)(?P=q)\s'''
-        for mobj in re.finditer(r'(?x)<script[^<]*>.+?</script>', webpage):
-            script = mobj.group(0)
+        parser = _GlomexScriptParser()
+        parser.feed(webpage)
+        parser.close()
+        for script in parser.scripts:
             integration_id = re.search(regex % 'integrationId', script)
             if not integration_id:
                 continue

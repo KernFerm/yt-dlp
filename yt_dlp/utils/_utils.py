@@ -4590,7 +4590,7 @@ def random_birthday(year_field, month_field, day_field):
     }
 
 
-def find_available_port(interface=''):
+def find_available_port(interface='127.0.0.1'):
     try:
         with socket.socket() as sock:
             sock.bind((interface, 0))

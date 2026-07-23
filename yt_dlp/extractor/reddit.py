@@ -368,7 +368,7 @@ class RedditIE(InfoExtractor):
         parsed_url = urllib.parse.urlparse(video_url)
 
         # Check for embeds in text posts, or else raise to avoid recursing into the same reddit URL
-        if 'reddit.com' in parsed_url.netloc and f'/{video_id}/' in parsed_url.path:
+        if parsed_url.hostname in {'reddit.com', 'www.reddit.com'} and f'/{video_id}/' in parsed_url.path:
             entries = []
             for media in traverse_obj(data, ('media_metadata', ...), expected_type=dict):
                 if not media.get('id') or media.get('e') != 'RedditVideo':
