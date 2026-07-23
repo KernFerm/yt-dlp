@@ -4,6 +4,18 @@
 # To create a release, dispatch the https://github.com/yt-dlp/yt-dlp/actions/workflows/release.yml workflow on master
 -->
 
+### 2026.07.05
+
+#### KernFerm fork build
+- Bumped custom fork version from `2026.07.04` to `2026.07.05`
+- Built and verified Windows x64 executable at `dist/yt-dlp.exe`
+- Updated fork documentation for the custom Windows build
+
+#### Security cleanup
+- Hardened parser and URL handling for CodeQL code-scanning alerts
+- Normalized empty local port bindings to loopback to avoid binding to all interfaces
+- Dismissed test-only CodeQL alert noise where remaining traces were limited to test coverage
+
 ### 2026.07.04
 
 #### Important changes
