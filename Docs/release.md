@@ -1,4 +1,4 @@
-# yt-dlp 2026.07.05 for Windows
+# yt-dlp 2026.08.16 for Windows
 
 This is a custom Windows x64 build of `yt-dlp` from the `KernFerm/yt-dlp` fork.
 It is intended for local use, including integration with a custom web browser or
@@ -21,12 +21,12 @@ After downloading, you can run it from PowerShell or Command Prompt:
 Expected version:
 
 ```text
-2026.07.05
+2026.08.16
 ```
 
 ## What Changed
 
-- Bumped the custom fork version from upstream `2026.07.04` to `2026.07.05`
+- Bumped the custom fork version from `2026.07.05` to `2026.08.16`
 - Included local CodeQL security cleanup for parser, URL handling, and loopback socket binding checks
 - Added fork-specific documentation for the Windows build
 - Built a standalone Windows x64 executable with PyInstaller
@@ -42,15 +42,15 @@ it only applied to test coverage, not runtime behavior.
 
 ## File Details
 
-- Version: `2026.07.05`
-- Release date: `2026-07-23`
+- Version: `2026.08.16`
+- Release date: `2026-08-16`
 - Platform: `Windows x64`
-- File size: `26,145,533 bytes`
-- SHA256: `2E6BDD0875A5B88C5C3BBDD72F4C56DC4163B9A7A50033AF1F8BB6E55EF3B542`
+- File size: `26,248,209 bytes`
+- SHA256: `B2E185F108F1EBA3CA3F2AB0F0F210D80C8978086D3279E0EF7D08C759D9856D`
 
 ## Verification
 
-The executable was verified on Thursday, July 23, 2026 with:
+The executable was verified on Sunday, August 16, 2026 with:
 
 - `yt-dlp.exe --version`
 - `yt-dlp.exe --help`
