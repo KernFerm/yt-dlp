@@ -53,7 +53,7 @@ default = [
     "mutagen",
     "pycryptodomex",
     "requests>=2.32.2,<3",
-    "urllib3>=2.0.2,<3",
+    "urllib3<3,>=2.0.2",
     "websockets>=13.0",
     "yt-dlp-ejs==0.8.0",
 ]
@@ -75,7 +75,7 @@ pin = [
     "mutagen==1.48.1",
     "pycryptodomex==3.23.0",
     "requests==2.34.2",
-    "urllib3==2.7.0",
+    "urllib3==2.8.0",
     "websockets==16.1.1 ; python_full_version < '3.11'",
     "websockets==17.0.1 ; python_full_version >= '3.11'",
     "yt-dlp-ejs==0.8.0",
