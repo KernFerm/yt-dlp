@@ -1,4 +1,4 @@
-# yt-dlp 2026.07.06 for Windows
+# yt-dlp 2026.10.28 for Windows
 
 This is a custom Windows x64 build of `yt-dlp` from the `KernFerm/yt-dlp` fork.
 It is intended for local use, including integration with a custom web browser or
@@ -21,36 +21,33 @@ After downloading, you can run it from PowerShell or Command Prompt:
 Expected version:
 
 ```text
-2026.07.06
+2026.10.28
 ```
 
 ## What Changed
 
-- Bumped the custom fork version from `2026.07.05` to `2026.07.06`
-- Included local CodeQL security cleanup for parser, URL handling, and loopback socket binding checks
-- Added fork-specific documentation for the Windows build
-- Built a standalone Windows x64 executable with PyInstaller
+- Bumped the custom fork version from `2026.07.06` to `2026.10.28`
+- Refreshed all Python dependency locks and hashed requirement sets
+- Upgraded `curl-cffi` to `0.17.0` with matching request-handler support
+- Repaired Dependabot monitoring for Python, Docker, and GitHub Actions
 
 ## Security Notes
 
-This build includes local cleanup for GitHub CodeQL findings from the fork. The
-socket binding cleanup keeps empty local interface values on loopback instead of
-binding to all network interfaces.
-
-The remaining test-only CodeQL noise was reviewed separately and dismissed where
-it only applied to test coverage, not runtime behavior.
+The dependency sets were regenerated and audited with `pip-audit`. No known
+vulnerabilities were reported in the default, curl-cffi, Linux, development,
+build, or PyInstaller requirement sets.
 
 ## File Details
 
-- Version: `2026.07.06`
-- Release date: `2026-08-16`
+- Version: `2026.10.28`
+- Release date: `2026-11-04`
 - Platform: `Windows x64`
-- File size: `26,248,103 bytes`
-- SHA256: `E72FA32A4892DB3B04135832D7487379E6758AED4A8C6C369B144ED1A45E23BC`
+- File size: `Pending rebuild`
+- SHA256: `Pending rebuild`
 
 ## Verification
 
-The executable was verified on Sunday, August 16, 2026 with:
+After rebuilding, verify the executable with:
 
 - `yt-dlp.exe --version`
 - `yt-dlp.exe --help`

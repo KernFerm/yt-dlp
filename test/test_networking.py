@@ -388,13 +388,18 @@ class TestHTTPRequestHandler(TestRequestHandlerBase):
             assert res.status == 200
             res.close()
 
-    def test_percent_encode(self, handler):
+    def test_percent_encode_unicode(self, handler):
+        # RFC 3986 section 6.2.2.1 recommends uppercase percent-encoding.
         with handler() as rh:
             # Unicode characters should be encoded with uppercase percent-encoding
             res = validate_and_send(rh, Request(f'http://127.0.0.1:{self.http_port}/中文.html'))
             assert res.status == 200
             res.close()
-            # don't normalize existing percent encodings
+
+    @pytest.mark.skip_handler('CurlCFFI', 'not supported by curl-cffi (non-standard)')
+    def test_percent_encode_keep_existing(self, handler):
+        # The default handlers preserve existing lowercase encodings for compatibility.
+        with handler() as rh:
             res = validate_and_send(rh, Request(f'http://127.0.0.1:{self.http_port}/%c7%9f'))
             assert res.status == 200
             res.close()
@@ -604,6 +609,8 @@ class TestHTTPRequestHandler(TestRequestHandlerBase):
         assert time.time() - now < DEFAULT_TIMEOUT
 
     def test_source_address(self, handler):
+        if sys.platform == 'win32' and handler.RH_NAME == 'curl_cffi':
+            pytest.skip('alternate loopback source addresses are not supported by curl-cffi on Windows')
         source_address = f'127.0.0.{random.randint(5, 255)}'
         # on some systems these loopback addresses we need for testing may not be available
         # see: https://github.com/yt-dlp/yt-dlp/issues/8890
@@ -823,13 +830,24 @@ class TestClientCertificate:
 @pytest.mark.parametrize('handler', ['CurlCFFI'], indirect=True)
 class TestHTTPImpersonateRequestHandler(TestRequestHandlerBase):
     def test_supported_impersonate_targets(self, handler):
+        chromium_clients = {
+            'chrome': 'Chrome',
+            'chromium': 'Chrome',
+            'edge': 'Edg',
+        }
         with handler(headers=std_headers) as rh:
             # note: this assumes the impersonate request handler supports the impersonate extension
             for target in rh.supported_targets:
+                assert target.client and target.version
                 res = validate_and_send(rh, Request(
                     f'http://127.0.0.1:{self.http_port}/headers', extensions={'impersonate': target}))
                 assert res.status == 200
-                assert std_headers['user-agent'].lower() not in res.read().decode().lower()
+                res_text = res.read().decode()
+                # Chromium-based targets can overlap with yt-dlp's built-in random user agent.
+                if target.client.lower() not in chromium_clients:
+                    assert std_headers['user-agent'].lower() not in res_text.lower()
+                else:
+                    assert f'{chromium_clients[target.client.lower()]}/{target.version}' in res_text
 
     def test_response_extensions(self, handler):
         with handler() as rh:

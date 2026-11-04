@@ -4,6 +4,15 @@
 # To create a release, dispatch the https://github.com/yt-dlp/yt-dlp/actions/workflows/release.yml workflow on master
 -->
 
+### 2026.10.28
+
+#### Dependency security update
+- Updated 41 Python dependencies across all generated lock and requirements files
+- Upgraded `curl-cffi` from `0.15.0` to `0.17.0` and added runtime compatibility support
+- Audited default, curl-cffi, Linux, development, build, and PyInstaller dependencies with no known vulnerabilities found
+- Repaired Dependabot configuration for Python, Docker, and GitHub Actions
+- Prepared the custom Windows build version `2026.10.28` for rebuild
+
 ### 2026.07.06
 
 #### KernFerm fork build

@@ -58,7 +58,8 @@ default = [
     "yt-dlp-ejs==0.8.0",
 ]
 curl-cffi = [
-    "curl-cffi>=0.5.10,!=0.6.*,!=0.7.*,!=0.8.*,!=0.9.*,<0.16 ; implementation_name == 'cpython'",
+    "curl-cffi>=0.5.10,!=0.6.*,!=0.7.*,!=0.8.*,!=0.9.*,<0.18 ; implementation_name == 'cpython'",
+    "typing-extensions ; python_full_version < '3.11'",
 ]
 secretstorage = [
     "secretstorage",
@@ -67,39 +68,38 @@ deno = [
     "deno>=2.6.6",
 ]
 pin = [
-    "brotli==1.2.0 ; implementation_name == 'cpython' and sys_platform != 'ios'",
-    "brotlicffi==1.2.0.1 ; implementation_name != 'cpython'",
-    "certifi==2026.7.22",
-    "charset-normalizer==3.4.9",
-    "idna==3.18",
+    "brotli==1.2.1 ; implementation_name == 'cpython' and sys_platform != 'ios'",
+    "brotlicffi==1.2.1.0 ; implementation_name != 'cpython'",
+    "certifi==2026.10.23",
+    "charset-normalizer==3.5.2",
+    "idna==3.20",
     "mutagen==1.48.1",
-    "pycryptodomex==3.23.0",
+    "pycryptodomex==3.24.1",
     "requests==2.34.2",
     "urllib3==2.8.0",
     "websockets==16.1.1 ; python_full_version < '3.11'",
-    "websockets==17.0.1 ; python_full_version >= '3.11'",
+    "websockets==17.3 ; python_full_version >= '3.11'",
     "yt-dlp-ejs==0.8.0",
 ]
 pin-curl-cffi = [
-    "certifi==2026.7.22 ; implementation_name == 'cpython'",
+    "certifi==2026.10.23 ; implementation_name == 'cpython'",
     "cffi==2.1.1 ; implementation_name == 'cpython'",
-    "curl-cffi==0.15.0 ; implementation_name == 'cpython'",
-    "markdown-it-py==4.2.0 ; implementation_name == 'cpython'",
-    "mdurl==0.1.2 ; implementation_name == 'cpython'",
-    "pycparser==3.0 ; implementation_name == 'cpython'",
-    "pygments==2.20.0 ; implementation_name == 'cpython'",
-    "rich==15.0.0 ; implementation_name == 'cpython'",
+    "curl-cffi==0.17.0 ; implementation_name == 'cpython'",
+    "pycparser==3.11 ; python_full_version < '3.11' and implementation_name == 'cpython'",
+    "pycparser==3.12 ; python_full_version >= '3.11' and implementation_name == 'cpython'",
+    "typing-extensions==4.16.0 ; python_full_version < '3.11'",
 ]
 pin-secretstorage = [
     "cffi==2.1.1 ; platform_python_implementation != 'PyPy'",
-    "cryptography==50.0.0",
+    "cryptography==50.0.2",
     "jeepney==0.9.0",
-    "pycparser==3.0 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'",
+    "pycparser==3.11 ; python_full_version < '3.11' and implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'",
+    "pycparser==3.12 ; python_full_version >= '3.11' and implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'",
     "secretstorage==3.5.0",
     "typing-extensions==4.16.0 ; python_full_version < '3.11'",
 ]
 pin-deno = [
-    "deno==2.9.5",
+    "deno==2.9.8",
 ]
 
 [dependency-groups]
@@ -474,7 +474,7 @@ addopts = [
     "-ra",  # summary: all except passed
     "--tb=short",
 ]
-verbosity_test_cases = "1"
+verbosity_test_cases = 1
 strict_config = true
 strict_markers = true
 markers = [

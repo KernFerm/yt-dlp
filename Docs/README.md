@@ -6,15 +6,15 @@ This fork is based on upstream `yt-dlp`, with local security cleanup and a custo
 
 ## Current Build
 
-- Version: `2026.07.06`
+- Version: `2026.10.28`
 - Platform: `Windows x64`
 - Executable: `dist/yt-dlp.exe`
-- Build date: `2026-08-16`
+- Build date: `2026-11-04`
 - Origin: `KernFerm/yt-dlp`
 
-## Verified
+## Rebuild Verification
 
-The current executable was tested with:
+After rebuilding the executable, verify it with:
 
 ```powershell
 .\dist\yt-dlp.exe --version
@@ -22,10 +22,10 @@ The current executable was tested with:
 .\dist\yt-dlp.exe --list-extractors
 ```
 
-The executable reports:
+The executable should report:
 
 ```text
-2026.07.06
+2026.10.28
 ```
 
 ## Basic Usage
