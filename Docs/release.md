@@ -43,8 +43,8 @@ build, or PyInstaller requirement sets.
 - Version: `2026.11.04`
 - Release date: `2026-11-04`
 - Platform: `Windows x64`
-- File size: `Pending rebuild`
-- SHA256: `Pending rebuild`
+- File size: `26,761,244 bytes`
+- SHA256: `dadebabf458b4c126858f62bcd8d43854fd6adea537cc755c9e4d52b7d921284`
 
 ## Verification
 
