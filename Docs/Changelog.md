@@ -4,6 +4,14 @@
 # To create a release, dispatch the https://github.com/yt-dlp/yt-dlp/actions/workflows/release.yml workflow on master
 -->
 
+### 2026.11.04
+
+#### Dependency security follow-up
+- Removed the vulnerable `filelock 4.1.0` resolution used by Python 3.10 development environments
+- Limited the pre-commit development toolchain to Python 3.11+, where patched `filelock 4.2.4` is available
+- Preserved Python 3.10 support for the yt-dlp application and runtime dependencies
+- Prepared the custom Windows build version `2026.11.04` for rebuild
+
 ### 2026.10.28
 
 #### Dependency security update

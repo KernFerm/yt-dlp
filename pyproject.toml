@@ -116,7 +116,8 @@ test = [
     "pytest-rerunfailures~=16.0",
 ]
 dev = [
-    "pre-commit",
+    # filelock's security-fixed 4.2.x releases require Python 3.11+
+    "pre-commit ; python_full_version >= '3.11'",
     {include-group = "static-analysis"},
     {include-group = "test"},
 ]

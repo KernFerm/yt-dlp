@@ -1,7 +1,7 @@
 autopep8==2.3.2 \
     --hash=sha256:89440a4f969197b69a995e4ce0661b031f455a9f776d2c5ba3dbd83466931758 \
     --hash=sha256:ce8ad498672c845a0c3de2629c15b635ec2b05ef8177a6e7c91c74f3e9b51128
-cfgv==3.5.0 \
+cfgv==3.5.0 ; python_full_version >= '3.11' \
     --hash=sha256:a8dc6b26ad22ff227d2634a65cb388215ce6cc96bbcc5cfde7641ae87e8dacc0 \
     --hash=sha256:d5b1034354820651caa73ede66a6294d6e95c1b00acc5e9b098e917404669132
     # via pre-commit
@@ -9,7 +9,7 @@ colorama==0.4.6 ; sys_platform == 'win32' \
     --hash=sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44 \
     --hash=sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6
     # via pytest
-distlib==0.4.4 \
+distlib==0.4.4 ; python_full_version >= '3.11' \
     --hash=sha256:ca4175b4ac7f71223cc30ed7248c45d2b38c2439d8ee6e498ab67ed63cf3508d \
     --hash=sha256:cf09d55b1e85a89576b036aeb71550bfd68320f3f21761ca329eadadad918638
     # via virtualenv
@@ -17,19 +17,13 @@ exceptiongroup==1.3.1 ; python_full_version < '3.11' \
     --hash=sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219 \
     --hash=sha256:a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598
     # via pytest
-filelock==4.1.0 ; python_full_version < '3.11' \
-    --hash=sha256:2ce9818e3e2d8f284c1a964414447ef148d42a5fd5e2a477a7118e574b293ec1 \
-    --hash=sha256:ad7f724afef953e731b1cc39bcd3a09166d72ed7fcdf29e6e88b1c3235c6715d
-    # via
-    #   python-discovery
-    #   virtualenv
 filelock==4.2.4 ; python_full_version >= '3.11' \
     --hash=sha256:301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e \
     --hash=sha256:c6d8663535e1650ee430507b4ffbac7b464dd64b7647ea0112a9f406499d163d
     # via
     #   python-discovery
     #   virtualenv
-identify==2.6.20 \
+identify==2.6.20 ; python_full_version >= '3.11' \
     --hash=sha256:6a16b69b93187244e0548cbfd25b3e4a6f9a7a2ad784625c3bec2b8d27b81aaa \
     --hash=sha256:ad729860a923858d26917c2f4fb0a1d83d27a75b1e090c06440c573f048f3285
     # via pre-commit
@@ -37,7 +31,7 @@ iniconfig==2.3.1 \
     --hash=sha256:67f4b9c50da0dedf52af349e7749a80a9057a5031199791b906c3bb3ae878960 \
     --hash=sha256:9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7
     # via pytest
-nodeenv==1.11.0 \
+nodeenv==1.11.0 ; python_full_version >= '3.11' \
     --hash=sha256:3ce8fe5b71d16e8af7039ca65257354100bc772965d6bc549070649e53b1b146 \
     --hash=sha256:edaa16e6c14d7cf395d75d4bbd5a26390f4dc06501a33b4e76282b02cc688a25
     # via pre-commit
@@ -48,10 +42,6 @@ packaging==26.3 \
     #   pytest
     #   pytest-rerunfailures
     #   virtualenv
-platformdirs==4.12.4 ; python_full_version < '3.11' \
-    --hash=sha256:63743c02414e755de4e31b8f68125c1407495b86c5a006e203c01ff8b9924250 \
-    --hash=sha256:78bfb9db2a8471ed7eebe3c3c932da413911042994e699b384fbb4493fa872d7
-    # via virtualenv
 platformdirs==4.13.6 ; python_full_version >= '3.11' \
     --hash=sha256:211d176e24674b5895dedf9021c262bcf9fad008a70610bfb147d4a8d6d8fe1b \
     --hash=sha256:21fc198fb09f3e78cadcdfd8a6ae4fd65cadc64a3cba78b694321c2996114a3e
@@ -60,9 +50,6 @@ pluggy==1.7.0 \
     --hash=sha256:7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec \
     --hash=sha256:d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8
     # via pytest
-pre-commit==4.6.2 ; python_full_version < '3.11' \
-    --hash=sha256:8f5d7bfb021ecdbcd9d49d89847082dd24172ccde534390081a679ad046e2441 \
-    --hash=sha256:e2dde9a75d3bce11bd3831c26d134df00a2803c1d818be6a0383c3dcda25dc4e
 pre-commit==4.7.0 ; python_full_version >= '3.11' \
     --hash=sha256:1f3deee12b914c8fa184bd2b5953391c2e4f36763e403d4a23dc9983fa7c6e86 \
     --hash=sha256:2e229038ad3656081b70c27913157e4b636ef306f643f024a8a8e3f0f7b2f877
@@ -81,11 +68,11 @@ pytest==9.2.0 \
 pytest-rerunfailures==16.7 \
     --hash=sha256:6956ddfb65ca1d07e7e3d99e2c5359d82300f4cb062e6049563bd2c106f72d5c \
     --hash=sha256:edf1886209c2b7dafe35b5bf1708d6ec40ccf6c6b357f0f02807efcec0204c99
-python-discovery==1.6.6 \
+python-discovery==1.6.6 ; python_full_version >= '3.11' \
     --hash=sha256:95e644ce8625c62dc195a603da9f8138ca5a35048224911b2cf7b3028025527a \
     --hash=sha256:d687024fec55c489e7a465c7f5644300a4d9dbf7727a556a85660536ee922933
     # via virtualenv
-pyyaml==6.0.3 \
+pyyaml==6.0.3 ; python_full_version >= '3.11' \
     --hash=sha256:00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c \
     --hash=sha256:02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3 \
     --hash=sha256:02ea2dfa234451bbb8772601d7b8e426c2bfa197136796224e50e35a78777956 \
@@ -235,10 +222,8 @@ tomli==2.5.0 ; python_full_version < '3.11' \
 typing-extensions==4.16.0 ; python_full_version < '3.11' \
     --hash=sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8 \
     --hash=sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5
-    # via
-    #   exceptiongroup
-    #   virtualenv
-virtualenv==21.15.1 \
+    # via exceptiongroup
+virtualenv==21.15.1 ; python_full_version >= '3.11' \
     --hash=sha256:0d14a991689c67600316880eadc0a37b7690cb632e3b4ac67e2bc05b2b2e24a4 \
     --hash=sha256:e79c90b8f601701599c25905e02839924fede2c798d52325670d24fbdaab74ee
     # via pre-commit

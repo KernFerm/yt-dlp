@@ -1,4 +1,4 @@
-# yt-dlp 2026.10.28 for Windows
+# yt-dlp 2026.11.04 for Windows
 
 This is a custom Windows x64 build of `yt-dlp` from the `KernFerm/yt-dlp` fork.
 It is intended for local use, including integration with a custom web browser or
@@ -21,15 +21,16 @@ After downloading, you can run it from PowerShell or Command Prompt:
 Expected version:
 
 ```text
-2026.10.28
+2026.11.04
 ```
 
 ## What Changed
 
-- Bumped the custom fork version from `2026.07.06` to `2026.10.28`
+- Bumped the custom fork version from `2026.10.28` to `2026.11.04`
 - Refreshed all Python dependency locks and hashed requirement sets
 - Upgraded `curl-cffi` to `0.17.0` with matching request-handler support
 - Repaired Dependabot monitoring for Python, Docker, and GitHub Actions
+- Removed the vulnerable Python 3.10 `filelock` development dependency path
 
 ## Security Notes
 
@@ -39,7 +40,7 @@ build, or PyInstaller requirement sets.
 
 ## File Details
 
-- Version: `2026.10.28`
+- Version: `2026.11.04`
 - Release date: `2026-11-04`
 - Platform: `Windows x64`
 - File size: `Pending rebuild`

@@ -6,7 +6,7 @@ This fork is based on upstream `yt-dlp`, with local security cleanup and a custo
 
 ## Current Build
 
-- Version: `2026.10.28`
+- Version: `2026.11.04`
 - Platform: `Windows x64`
 - Executable: `dist/yt-dlp.exe`
 - Build date: `2026-11-04`
@@ -25,7 +25,7 @@ After rebuilding the executable, verify it with:
 The executable should report:
 
 ```text
-2026.10.28
+2026.11.04
 ```
 
 ## Basic Usage
